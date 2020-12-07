@@ -47,18 +47,19 @@
 		var i=d3.select('#media').selectAll(".card mb-3").data(data).enter().append(i).append("div").append("h6").attr("style","display: block;margin-left: auto;margin-right: auto;text-align: center;")
                 .html(d=>{ 
                   console.log(d);
-                  let v=d["o:media"][0]["@id"]				  
+                  let v=d["o:media"][0]["@id"]
+				  //ou function
+					var a = d3.json(v).then(function(data){
+						var i=d3.select('#items').selectAll(".card mb-3").data(data).enter().append(i).append("img").attr("id","image").attr("style","vertical-align: middle;border-style: none;display: block;margin-left: auto;margin-right: auto; width: 50%;")
+								.attr('src', d=>{
+										return d["o:thumbnail_urls"]["square"];
+							})
+								.attr("data-holder-rendered","true");});
+					
+				//ou function				  
                   return v;
 
-//ou function
-	var a = d3.json(v).then(function(data){
-		var i=d3.select('#items').selectAll(".card mb-3").data(data).enter().append(i).append("img").attr("id","image").attr("style","vertical-align: middle;border-style: none;display: block;margin-left: auto;margin-right: auto; width: 50%;")
-                .attr('src', d=>{
-                        return d["o:thumbnail_urls"]["square"];
-              })
-                .attr("data-holder-rendered","true");});
-	
-//ou function
+
 
                         })
                 .on("click",function(d){
