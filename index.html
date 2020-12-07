@@ -44,7 +44,7 @@
 	}
 	function media(){
 		var z=d3.json(UrlAPI).then(function(data){
-		var i=d3.select('#media').data(data).enter().append(i).append("h6").attr("style","display: block;margin-left: auto;margin-right: auto;text-align: center;")
+		var i=d3.select('#media').selectAll(".card mb-3").data(data).enter().append(i).append("div").append("h6").attr("style","display: block;margin-left: auto;margin-right: auto;text-align: center;")
                 .html(d=>{ 
                   console.log(d);
                   let v=d["o:media"][0]["@id"]				  
