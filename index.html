@@ -52,7 +52,7 @@
 				d3.json(v).then(function(data){
 				var p=d3.select('#divItem').selectAll(".card mb-3").data(data).enter().append(p).append("img").attr("id","image").attr("style","vertical-align: middle;border-style: none;display: block;margin-left: auto;margin-right: auto; width: 50%;")
 						.attr("src", d=>{
-								return d["o:thumbnail_urls"]["square"]; 
+								return d["o:thumbnail_urls"]["large"]; 
 								}).attr("data-holder-rendered","true");}
 						);
 						
