@@ -19,13 +19,12 @@
 </div>
 <script>
 	let UrlAPI="https://polemika.univ-paris8.fr/omk/api/items?item_set_id=2"
-	function getData(UrlAPI){
+/* 	function getData(UrlAPI){
 		return d3.json(UrlAPI)
-	}
+	} */
 	
 	d3.json(UrlAPI).then(function(data){
 			let i=d3.select('#items').selectAll(".card mb-3").data(data).enter().append(i)
-			i.append("img").attr("id","image").attr("style","vertical-align: middle;border-style: none;display: block;margin-left: auto;margin-right: auto; width: 50%;")
 			i.append("h6").attr("style","display: block;margin-left: auto;margin-right: auto;text-align: center;")
                 .html(d=>{ 
                   console.log(d);
