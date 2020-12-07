@@ -22,15 +22,16 @@
  	function getData(UrlAPI){
 		return d3.json(UrlAPI)
 	}
+	var itemcontent=getData(UrlAPI);
 	function showItems(){
-		getData(UrlAPI).then(function(data){
+		itemcontent.then(function(data){
 			var i=d3.select('#items').selectAll(".card mb-3").data(data).enter().append(i)
 			i.append("h6").attr("style","display: block;margin-left: auto;margin-right: auto;text-align: center;")
                 .html(d=>{ 
                   console.log(d);
                   let v=d["dcterms:title"][0]["@value"]
                   return v;
-				  
+
                         })
                 .on("click",function(d){
                             show(d);
