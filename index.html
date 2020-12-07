@@ -29,7 +29,7 @@
 			i.append("h6").attr("style","display: block;margin-left: auto;margin-right: auto;text-align: center;")
                 .html(d=>{ 
                   console.log(d);
-                  let v=d["o:title"][0]["@value"]
+                  let v=d["dcterms:title"][0]["@value"]
                   return v;
                         })
                 .on("click",function(d){
