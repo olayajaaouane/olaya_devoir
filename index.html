@@ -4,13 +4,42 @@
 	<meta charset="UTF-8">
 	<title>Devoir JAAOUANE Olaya </title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">	
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    
 </head>
 <body>
-<div class="jumbotron">
+<div id="header">
   <h1 class="display-3">Examen THYP du 7 décembre 2020</h1>
   <h2>Jaaouane, Olaya</h2>
 </div>
+<div id="items">
 
+</div>
+<script>
+	let UrlAPI="https://polemika.univ-paris8.fr/omk/api/items?item_set_id=2"
+	function getData(UrlAPI){
+		return d3.json(UrlAPI)
+	}
+	function showItems(UrlAPI){
+		getData(UrlAPI).then(function(data){
+			let i=d3.select('#items').selectAll(".card mb-3").data(data).enter().append(i)
+			c.append("img").attr("id","image").attr("style","vertical-align: middle;border-style: none;display: block;margin-left: auto;margin-right: auto; width: 50%;")
+			c.append("h6").attr("style","display: block;margin-left: auto;margin-right: auto;text-align: center;")
+                .html(d=>{ 
+                  console.log(d);
+                  let v=d["o:title"][0]["@value"]
+                  return v;
+                        })
+                .on("click",function(d){
+                            show(d);
+                                       })
+	})};
+function show(d){
+  console.log(d);
+}
+</script>
 </body>
 </html>
       
