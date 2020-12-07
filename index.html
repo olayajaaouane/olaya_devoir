@@ -17,6 +17,8 @@
 <div id="items" class="row">
 
 </div>
+<div id="media" class="row">
+</div>
 <script>
 	let UrlAPI="https://polemika.univ-paris8.fr/omk/api/items?item_set_id=2"
  	function getData(UrlAPI){
@@ -30,19 +32,34 @@
 			i.append("h6").attr("style","display: block;margin-left: auto;margin-right: auto;text-align: center;")
                 .html(d=>{ 
                   console.log(d);
-                  let v=d["dcterms:title"][0]["@value"]
+                  let v=d["dcterms:title"][0]["@value"]				  
                   return v;
-
                         })
                 .on("click",function(d){
                             show(d);
                                        })
+									   
 	});
 	return a;
 	}
-	a=showItems();
-	function show(d){
-  console.log(d);
+	function media(){
+		var z=d3.json(UrlAPI).then(function(data){
+		var i=d3.select('#media').data(data).enter().append(i)
+		i.append("h6").attr("style","display: block;margin-left: auto;margin-right: auto;text-align: center;")
+                .html(d=>{ 
+                  console.log(d);
+                  let v=d["o:media"][0]["@id"]				  
+                  return v;
+                        })
+                .on("click",function(d){
+                            show(d);
+                                       })
+	return v;
+	})};
+	
+a=showItems();
+function show(d){
+console.log(d);
 }
 </script>
 </body>
